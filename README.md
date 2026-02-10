@@ -1,73 +1,100 @@
-# React + TypeScript + Vite
+# Trial Monitor 📊
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A modern, glassmorphism-styled dashboard to track your subscriptions, trial periods, and monthly expenses.
 
-Currently, two official plugins are available:
+## 🚀 Getting Started
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+### Prerequisites
+- **Node.js**: Installed on your computer.
+- **Git**: Installed for version control.
 
-## React Compiler
+### Installation
+If you haven't already:
+1.  Clone the repository:
+    ```bash
+    git clone https://github.com/josesilva1965/trial-monitor.git
+    ```
+2.  Navigate to the folder:
+    ```bash
+    cd trial-monitor
+    ```
+3.  Install dependencies:
+    ```bash
+    npm install
+    ```
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+---
 
-## Expanding the ESLint configuration
+## 🖥️ How to Run the App
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+### Option 1: Desktop Shortcut (Recommended)
+1.  Double-click the **Trial Monitor** shortcut on your Desktop.
+2.  Or double-click **`run.bat`** in the project folder.
+3.  **Behavior**:
+    - A dedicated app window opens (no browser tabs).
+    - The background server starts minimized (invisible).
+    - **To Exit**: Just close the app window. The server shuts down automatically.
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+### Option 2: Manual Start
+If you prefer the command line:
+```bash
+npm run dev
+```
+Then open `http://localhost:5173` in your browser.
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+---
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+## ✨ Features
+
+### 1. Dashboard Stats
+See a quick summary at the top:
+- **Total Monthly Cost**: Calculated based on your active trials and their currencies.
+- **Active Trials**: Number of ongoing subscriptions.
+- **Expiring Soon**: Count of trials ending within 3 days.
+
+### 2. Price & Currency
+When adding a trial, you can now specify:
+- **Monthly Cost**
+- **Currency** (USD, EUR, GBP, BRL)
+
+### 3. Notifications 🔔
+The app proactively alerts you about expiring trials.
+- **Browser Alerts**: System popups (enable in Settings).
+- **Email Alerts**: Receive emails via EmailJS (configure keys in Settings).
+
+### 4. App Mode
+- The app runs in a clean, borderless window.
+- Use the **Exit App** button in the sidebar to close it cleanly.
+
+---
+
+## ☁️ GitHub Instructions
+
+### Saving Your Changes
+When you make changes to the code or add new features, save them to GitHub:
+
+1.  **Stage changes**:
+    ```bash
+    git add .
+    ```
+2.  **Commit** (save locally):
+    ```bash
+    git commit -m "Description of what you changed"
+    ```
+3.  **Push** (upload to cloud):
+    ```bash
+    git push
+    ```
+
+### Pulling Updates
+If you made changes on another computer:
+```bash
+git pull
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+---
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+## 🛠️ Troubleshooting
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+- **"Connection Refused"**: The launcher automatically waits for the server to be ready. If it happens, just wait a few seconds longer.
+- **App won't close**: Click inside the background command window (if visible) and press **ENTER**.
