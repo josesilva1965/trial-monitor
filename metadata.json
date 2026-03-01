@@ -1,0 +1,5 @@
+{
+  "name": "TrialGuard",
+  "description": "A responsive trial subscription tracker preventing unwanted charges through timely alerts and visual dashboards.",
+  "requestFramePermissions": []
+}
