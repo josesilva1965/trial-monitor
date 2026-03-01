@@ -15,6 +15,7 @@ interface TrialFormProps {
 export function TrialForm({ initialData, onSubmit, submitLabel = "Start Tracking", title = "Add New Trial" }: TrialFormProps) {
     const [serviceName, setServiceName] = useState(initialData?.serviceName || "")
     const [email, setEmail] = useState(initialData?.email || "")
+    const [password, setPassword] = useState(initialData?.password || "")
     const [startDate, setStartDate] = useState(initialData?.startDate || format(new Date(), "yyyy-MM-dd"))
     const [durationLabel, setDurationLabel] = useState<Trial['durationLabel']>(initialData?.durationLabel || '7 Days')
     const [customEndDate, setCustomEndDate] = useState(initialData?.endDate || "")
@@ -28,6 +29,7 @@ export function TrialForm({ initialData, onSubmit, submitLabel = "Start Tracking
         if (initialData) {
             setServiceName(initialData.serviceName)
             setEmail(initialData.email)
+            setPassword(initialData.password || "")
             setStartDate(initialData.startDate)
             setDurationLabel(initialData.durationLabel)
             setCustomEndDate(initialData.endDate)
@@ -69,6 +71,7 @@ export function TrialForm({ initialData, onSubmit, submitLabel = "Start Tracking
             id: initialData?.id || crypto.randomUUID(),
             serviceName,
             email,
+            password: password || undefined,
             startDate,
             endDate: computedEndDate,
             durationLabel,
@@ -83,6 +86,7 @@ export function TrialForm({ initialData, onSubmit, submitLabel = "Start Tracking
         if (!initialData) {
             setServiceName("")
             setEmail("")
+            setPassword("")
             setDurationLabel("7 Days")
             setCustomEndDate("")
             setStartDate(format(new Date(), "yyyy-MM-dd"))
@@ -119,6 +123,18 @@ export function TrialForm({ initialData, onSubmit, submitLabel = "Start Tracking
                             value={email}
                             onChange={e => setEmail(e.target.value)}
                             placeholder="you@example.com"
+                        />
+                    </div>
+
+                    <div className="space-y-2">
+                        <label className="text-sm font-medium leading-none">
+                            Password
+                        </label>
+                        <Input
+                            type="password"
+                            value={password}
+                            onChange={e => setPassword(e.target.value)}
+                            placeholder="Optional password"
                         />
                     </div>
 

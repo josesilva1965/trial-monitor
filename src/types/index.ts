@@ -4,6 +4,7 @@ export interface Trial {
     id: string;
     serviceName: string;
     email: string;
+    password?: string;
     startDate: string; // ISO Date String
     endDate: string; // ISO Date String
     durationLabel: '7 Days' | '14 Days' | '30 Days' | 'Custom';

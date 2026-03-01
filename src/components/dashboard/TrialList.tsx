@@ -1,4 +1,4 @@
-import { differenceInCalendarDays, parseISO } from "date-fns"
+import { parseISO } from "date-fns"
 import { Trial } from "@/types"
 import { TrialCard } from "./TrialCard"
 import { PackageOpen } from "lucide-react"

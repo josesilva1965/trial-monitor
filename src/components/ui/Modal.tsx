@@ -1,5 +1,5 @@
 import { X } from "lucide-react"
-import { useEffect, useRef } from "react"
+import { useEffect } from "react"
 import { createPortal } from "react-dom"
 import { Button } from "./Button"
 import { cn } from "@/lib/utils"
@@ -13,7 +13,6 @@ interface ModalProps {
 }
 
 export function Modal({ isOpen, onClose, title, children, className }: ModalProps) {
-    const overlayRef = useRef<HTMLDivElement>(null)
 
     useEffect(() => {
         const handleEscape = (e: KeyboardEvent) => {

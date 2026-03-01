@@ -1,5 +1,6 @@
+import { useState } from "react"
 import { differenceInCalendarDays, parseISO, format } from "date-fns"
-import { Copy, Trash2, Calendar, Clock, Edit, CreditCard } from "lucide-react"
+import { Copy, Trash2, Calendar, Clock, Edit, CreditCard, Key, Eye, EyeOff } from "lucide-react"
 import { Card, CardContent, CardFooter, CardHeader } from "@/components/ui/Card"
 import { Badge } from "@/components/ui/Badge"
 import { Button } from "@/components/ui/Button"
@@ -13,6 +14,7 @@ interface TrialCardProps {
 }
 
 export function TrialCard({ trial, onDelete, onEdit }: TrialCardProps) {
+    const [showPassword, setShowPassword] = useState(false)
     const endDate = parseISO(trial.endDate)
     const startDate = parseISO(trial.startDate)
     const daysLeft = differenceInCalendarDays(endDate, new Date())
@@ -95,6 +97,32 @@ export function TrialCard({ trial, onDelete, onEdit }: TrialCardProps) {
                                         trial.currency === 'BRL' ? 'R$' : trial.currency}
                             {trial.price.toFixed(2)}
                         </span>
+                    </div>
+                )}
+                {trial.password && (
+                    <div className="flex items-center justify-between gap-2.5 bg-muted/30 p-2 rounded-md mt-1">
+                        <div className="flex items-center gap-2.5 min-w-0">
+                            <Key className="h-4 w-4 text-muted-foreground shrink-0" />
+                            <span className="text-muted-foreground shrink-0">Pass:</span>
+                            <span className="font-medium font-mono truncate">
+                                {showPassword ? trial.password : '••••••••'}
+                            </span>
+                        </div>
+                        <Button
+                            variant="ghost"
+                            size="sm"
+                            className="h-6 w-6 p-0 hover:bg-transparent"
+                            onClick={(e) => {
+                                e.stopPropagation();
+                                setShowPassword(!showPassword);
+                            }}
+                        >
+                            {showPassword ? (
+                                <EyeOff className="h-3 w-3 text-muted-foreground" />
+                            ) : (
+                                <Eye className="h-3 w-3 text-muted-foreground" />
+                            )}
+                        </Button>
                     </div>
                 )}
             </CardContent>
